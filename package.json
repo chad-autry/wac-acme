@@ -1,0 +1,23 @@
+{
+  "name": "wac-acme",
+  "version": "0.0.0",
+  "description": "An acme client for the wac stack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chad-autry/wac-acme.git"
+  },
+  "keywords": [
+    "Docker",
+    "acme"
+  ],
+  "author": {
+    "name": "Chad Autry",
+    "email": "chad.autry@gmail.com",
+    "url": "http://chad-autry.github.io/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chad-autry/wac-acme/issues"
+  },
+  "homepage": "https://github.com/chad-autry/wac-acme"
+}
