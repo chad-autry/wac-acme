@@ -1,3 +1,6 @@
+###
+[![Build Status](https://travis-ci.org/chad-autry/wac-acme.svg?branch=master)](https://travis-ci.org/chad-autry/wac-acme)
+[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://registry.hub.docker.com/u/chadautry/wac-acme/)
 # wac-acme
 Certificate renewal and distribution for the [wac](https://github.com/chad-autry/wac-bp) stack
 
