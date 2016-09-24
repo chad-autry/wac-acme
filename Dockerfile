@@ -1,5 +1,5 @@
 FROM gliderlabs/alpine:3.4
-RUN apk add --update ca-certificates openssl curl
+RUN apk add --update ca-certificates openssl curl vim
 COPY wac-acme.sh /usr/bin/wac-acme.sh
 RUN chmod +x /usr/bin/wac-acme.sh
 RUN wget https://raw.githubusercontent.com/gheift/letsencrypt.sh/master/letsencrypt.sh
