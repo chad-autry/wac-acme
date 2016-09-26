@@ -9,7 +9,7 @@ umask 0022
 /usr/bin/letsencrypt.sh register -a account.key -e $1
 
 # Request the certificate be signed, domain comes as the second parameter
-/usr/bin/letsencrypt.sh sign -P /usr/bin/etcdAcmeResponse.sh -a account.key -k server.key -c server.pem $2
+/usr/bin/letsencrypt.sh sign -P /usr/bin/pushAcmeResponseToEtcd.sh -a account.key -k server.key -c server.pem $2
 
 # Concatenate the certificate (public and private)
 
