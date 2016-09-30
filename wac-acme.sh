@@ -3,6 +3,7 @@
 # Create the account key
 umask 0177
 openssl genrsa -out account.key 4096
+openssl genrsa -out server.key 4096
 umask 0022
 
 # Register the key with letsencrypt, e-mail comes as the first parameter
