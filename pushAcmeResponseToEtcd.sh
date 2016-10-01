@@ -1,7 +1,15 @@
 #!/bin/sh
 
-# Push the response, Domain Token expected as the second param, Account THumbprint as the 3rd. (Domain as the first, but not used)
-/usr/bin/etcdctl set /acme "$3.$4"
+# Push the response, Domain Token expected as the third param, Account Thumbprint as the fourth. (Domain as the second, but not used)
+if [$1 == 'install']
+    then
+        /usr/bin/etcdctl set /acme/token $3
+        /usr/bin/etcdctl set /acme/thumbprint $4
+        # I don't want to bother splitting values on the other side, so just set an independent watched value
+        /usr/bin/etcdctl set /acme/watched date +%s%N
 
-# Sleep 30 seconds so the webservers have a chance to react
-sleep 30
+        # Sleep 30 seconds so the webservers have a chance to react
+        sleep 30
+fi
+
+
