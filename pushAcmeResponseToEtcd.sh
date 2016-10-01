@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Push the response, Domain expected as the second param, Domain Token expected as the third param, Account Thumbprint as the fourth.
-if [$1 == 'install']
+if ["$1" == "install"]
     then
         /usr/bin/etcdctl set /acme/domain $2
         /usr/bin/etcdctl set /acme/token $3
