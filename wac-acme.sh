@@ -12,8 +12,8 @@ umask 0022
 # Request the certificate be signed, domain comes as the second parameter
 /usr/bin/letsencrypt.sh sign -P /usr/bin/pushAcmeResponseToEtcd.sh -a account.key -k server.key -c server.pem $2
 
-/usr/bin/etcdctl set /ssl/key "$(cat server.key)"
-/usr/bin/etcdctl set /ssl/server_pem "$(cat server.pem)"
-/usr/bin/etcdctl set /ssl/server_chain "$(cat server.pem_chain)"
+/usr/bin/etcdctl set /ssl/key -- "$(cat server.key)"
+/usr/bin/etcdctl set /ssl/server_pem -- "$(cat server.pem)"
+/usr/bin/etcdctl set /ssl/server_chain -- "$(cat server.pem_chain)"
 # Set a single watch value to be updated when all the certs are updated
 /usr/bin/etcdctl set /ssl/watched "$(date +%s%N)"
