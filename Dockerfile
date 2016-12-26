@@ -12,4 +12,4 @@ RUN tar xzvf etcd-v2.3.7-linux-amd64.tar.gz
 RUN mv etcd-v2.3.7-linux-amd64/etcdctl /usr/bin/etcdctl
 RUN rm -r etcd-v2.3.7-linux-amd64
 RUN rm etcd-v2.3.7-linux-amd64.tar.gz
-ENTRYPOINT ["/bin/sh", "/usr/bin/wac-acme.sh", "start"]
+ENTRYPOINT ["/bin/sh", "/usr/bin/wac-acme.sh"]
