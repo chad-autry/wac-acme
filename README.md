@@ -19,4 +19,5 @@ Wrapped ACME client for integration with the [wac](https://github.com/chad-autry
 sudo docker run --net host --name acme chadautry/wac-acme <email> <domain>
 ```
 
-## Note This acme 'client' doesn't directlly host the response, or have cron job helpers. It will also just blindy renew the certificate without checking if it is required.
+## Note 
+This acme 'client' doesn't directlly host the response, or have cron job helpers. It will also just blindy renew the certificate without checking if it is required.
