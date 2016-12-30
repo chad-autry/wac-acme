@@ -6,7 +6,7 @@ Wrapped ACME client for integration with the [wac](https://github.com/chad-autry
 
 * Packaged as a docker image
 * Requires host networking to access etcd
-* Requires e-mail and domain passed as parameters
+* Requires e-mail and domain passed in etcd
 * Creates a certificate
 * Distributes the http challenege response through etcd
     * Waits 30 seconds for endpoints to host the challenge response
@@ -16,7 +16,9 @@ Wrapped ACME client for integration with the [wac](https://github.com/chad-autry
 
 ## Example
 ```
-sudo docker run --net host --name acme chadautry/wac-acme <email> <domain>
+sudo etcdctl set /domain/email <email>
+sudo etcdctl set /domain/name <domain>
+sudo docker run --net host --name acme chadautry/wac-acme
 ```
 
 ## Note 
