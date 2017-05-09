@@ -7,7 +7,9 @@ Wrapped ACME client for integration with the [wac](https://github.com/chad-autry
 * Packaged as a docker image
 * Requires host networking to access etcd
 * Requires e-mail and domain passed in etcd
-* Creates a certificate
+* Only allows one instance to run at a time
+* Creates a certificate, if current cert expires within 30 days
+    * Expects cert at /var/ssl/fullchain.pem
 * Distributes the http challenege response through etcd
     * Waits 30 seconds for endpoints to host the challenge response
 * Notifies CA to complete validation
@@ -18,8 +20,8 @@ Wrapped ACME client for integration with the [wac](https://github.com/chad-autry
 ```
 sudo etcdctl set /domain/email <email>
 sudo etcdctl set /domain/name <domain>
-sudo docker run --net host --name acme chadautry/wac-acme
+sudo docker run --net host -v /var/ssl:/var/ssl --name acme chadautry/wac-acme
 ```
 
 ## Note 
-This acme 'client' doesn't directlly host the response, or have cron job helpers. It will also just blindy renew the certificate without checking if it is required.
+This acme 'client' doesn't directlly host the response, or have cron job helpers.
