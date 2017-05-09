@@ -1,5 +1,23 @@
 #!/bin/sh
 
+# seconds in 30 days
+seconds=`expr 86400 \\* 30`
+
+# Make sure no othe renewal job is running concurrentlly
+/usr/bin/etcdctl mk /acme/lock lock --ttl 180
+if [ $? -ne 0 ]
+then
+    # just exit, another instance is running
+    exit 0
+fi
+
+# Check the expiration/existence of the cert
+if openssl x509 -checkend $seconds -noout -in /var/ssl/fullchain.pem
+then
+  echo "Certificate is still good for at least another 30 days!"
+  exit 0
+fi
+
 # Create the account key
 umask 0177
 openssl genrsa -out account.key 4096
