@@ -34,6 +34,13 @@ domain=$(/usr/bin/etcdctl get /domain/name)
 # Request the certificate be signed
 /usr/bin/letsencrypt.sh sign -P /usr/bin/pushAcmeResponseToEtcd.sh -a account.key -k server.key -c server.pem $domain
 
+# Check the expiration/existence of the cert
+if ! openssl x509 -checkend $seconds -noout -in server.pem_chain
+then
+  echo "Did not succesfully sign the certificate!"
+  exit 0
+fi
+
 # -- Means there are no more command options, needed since the cert files start with '-'
 /usr/bin/etcdctl set -- /ssl/key "$(cat server.key)"
 /usr/bin/etcdctl set -- /ssl/server_pem "$(cat server.pem)"
